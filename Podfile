@@ -4,6 +4,6 @@ use_frameworks!
 
 target 'iOSdemos' do
    pod 'RxCocoa'
-
+   pod 'Reveal-SDK', '~> 2', :configurations => ['Debug']
 
 end

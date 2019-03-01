@@ -1,4 +1,5 @@
 PODS:
+  - Reveal-SDK (2)
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
@@ -6,19 +7,22 @@ PODS:
     - RxAtomic (~> 4.4)
 
 DEPENDENCIES:
+  - Reveal-SDK (~> 2)
   - RxCocoa
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Reveal-SDK
     - RxAtomic
     - RxCocoa
     - RxSwift
 
 SPEC CHECKSUMS:
+  Reveal-SDK: 4d36a47c7091843eee525b72219e005b90bbac0b
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: 4031ced35e81ed0dda4ab33818cbc147616c1585
+PODFILE CHECKSUM: ebce78e597600edb021a5894a32fe2a9bbc670a3
 
 COCOAPODS: 1.5.3
