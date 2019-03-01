@@ -71,6 +71,15 @@ class DemosViewController: UIViewController {
                 let vc = RxSwiftExampleViewController()
                 sSelf.navigationController?.pushViewController(vc, animated: true)
             }).disposed(by: disposeBag)
+      
+        tableView.rx
+            .itemSelected
+            .subscribe(onNext: {[weak self] indexPath in
+            guard let sSelf = self else { return }
+            print("选中项的indexPath为：\(indexPath)")
+            
+            sSelf.tableView.deselectRow(at: indexPath, animated: true)
+        }).disposed(by: disposeBag)
         
     }
     

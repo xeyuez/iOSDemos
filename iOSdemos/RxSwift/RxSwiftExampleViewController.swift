@@ -11,15 +11,111 @@ import RxSwift
 import RxCocoa
 
 class RxSwiftExampleViewController: UIViewController {
+    
+    lazy var tableView: UITableView = {
+        let view = UITableView(frame: CGRect.zero)
+        view.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
+        view.frame = self.view.frame
+        self.view.addSubview(view)
+        return view
+    }()
+    
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        label1()
-        label2()
+        planTableView()
     }
+    
+    // TableView基本用法
+    func planTableView() {
+        //初始化数据
+        let items = Observable.just([
+            "文本输入框的用法",
+            "开关按钮的用法",
+            "进度条的用法",
+            "文本标签的用法",
+            ])
+        
+        //设置单元格数据（其实就是对 cellForRowAt 的封装）
+        items
+            .bind(to: tableView.rx.items) { (tableView, row, element) in
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+                cell.textLabel?.text = "\(row)：\(element)"
+                return cell
+            }
+            .disposed(by: disposeBag)
+        
+        
+        
+        //获取选中项的索引
+        tableView.rx.itemSelected.subscribe(onNext: {[weak self] indexPath in
+            guard let sSelf = self else { return }
+            print("选中项的indexPath为：\(indexPath)")
+            
+            sSelf.tableView.deselectRow(at: indexPath, animated: true)
+        }).disposed(by: disposeBag)
+        
+        //获取选中项的内容
+        tableView.rx.modelSelected(String.self).subscribe(onNext: { item in
+            print("选中项的标题为：\(item)")
+        }).disposed(by: disposeBag)
+        
+        //获取被取消选中项的索引
+        tableView.rx.itemDeselected.subscribe(onNext: { indexPath in
+            print("被取消选中项的indexPath为：\(indexPath)")
+        }).disposed(by: disposeBag)
+        
+        //获取被取消选中项的内容
+        tableView.rx.modelDeselected(String.self).subscribe(onNext: { item in
+            print("被取消选中项的的标题为：\(item)")
+        }).disposed(by: disposeBag)
+        
+        
+        //单元格删除事件的响应
+        //获取删除项的索引
+        tableView.rx.itemDeleted.subscribe(onNext: { indexPath in
+            print("删除项的indexPath为：\(indexPath)")
+        }).disposed(by: disposeBag)
+        
+        //获取删除项的内容
+        tableView.rx.modelDeleted(String.self).subscribe(onNext: { item in
+            print("删除项的的标题为：\(item)")
+        }).disposed(by: disposeBag)
+        
+        
+        //单元格移动事件响应
+        //获取移动项的索引
+        tableView.rx.itemMoved.subscribe(onNext: { sourceIndexPath, destinationIndexPath in
+            print("移动项原来的indexPath为：\(sourceIndexPath)")
+            print("移动项现在的indexPath为：\(destinationIndexPath)")
+        }).disposed(by: disposeBag)
+        
+        //单元格插入事件响应
+        //获取插入项的索引
+        tableView.rx.itemInserted.subscribe(onNext: { indexPath in
+            print("插入项的indexPath为：\(indexPath)")
+        }).disposed(by: disposeBag)
+       
+        //单元格尾部附件（图标）点击事件响应
+        //获取点击的尾部图标的索引
+        tableView.rx.itemAccessoryButtonTapped.subscribe(onNext: { indexPath in
+            print("尾部项的indexPath为：\(indexPath)")
+        }).disposed(by: disposeBag)
+        
+        //获取选中项的索引
+        tableView.rx.willDisplayCell.subscribe(onNext: { cell, indexPath in
+            print("将要显示单元格indexPath为：\(indexPath)")
+            print("将要显示单元格cell为：\(cell)\n")
+        }).disposed(by: disposeBag)
+        
+        
+        
+        
+    }
+    
     
     // Observable 几种事件
     func event() {

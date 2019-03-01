@@ -1,7 +1,12 @@
 PODS:
+  - Differentiator (3.1.0)
   - Reveal-SDK (2)
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
+    - RxSwift (~> 4.0)
+  - RxDataSources (3.1.0):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
@@ -9,20 +14,25 @@ PODS:
 DEPENDENCIES:
   - Reveal-SDK (~> 2)
   - RxCocoa
+  - RxDataSources (~> 3.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Differentiator
     - Reveal-SDK
     - RxAtomic
     - RxCocoa
+    - RxDataSources
     - RxSwift
 
 SPEC CHECKSUMS:
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   Reveal-SDK: 4d36a47c7091843eee525b72219e005b90bbac0b
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: ebce78e597600edb021a5894a32fe2a9bbc670a3
+PODFILE CHECKSUM: c709c2ee016d0f619cc088cfd6ab04fd54f7dedf
 
 COCOAPODS: 1.5.3
