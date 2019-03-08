@@ -3,11 +3,12 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'iOSdemos' do
-    #base
+   #base
    pod 'Reveal-SDK', '~> 2', :configurations => ['Debug']
    
    #RxSwift
    pod 'RxCocoa'
    pod 'RxDataSources'
+   pod 'RxAlamofire'
 
 end

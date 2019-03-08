@@ -9,6 +9,29 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
+
+
+
+
+//自定义Section
+struct MySection {
+    var header: String
+    var items: [Item]
+}
+
+extension MySection : AnimatableSectionModelType {
+    typealias Item = String
+    
+    var identity: String {
+        return header
+    }
+    
+    init(original: MySection, items: [Item]) {
+        self = original
+        self.items = items
+    }
+}
 
 class RxSwiftExampleViewController: UIViewController {
     
@@ -26,8 +49,73 @@ class RxSwiftExampleViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        planTableView()
+        tableviewRxDataSources2()
     }
+    
+    // rxdataview是以Section为单位 方式一：使用自带的Section
+    func tableviewRxDataSources1() {
+        //初始化数据
+        let items = Observable.just([
+            SectionModel(model: "", items: [
+                "方式一：使用自带的Section",
+                "方式一：使用自带的Section",
+                "方式一：使用自带的Section"
+                ])
+            ])
+        
+        //创建数据源
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, String>>(configureCell: {
+                (dataSource, tv, indexPath, element) in
+                let cell = tv.dequeueReusableCell(withIdentifier: "cell")!
+                cell.textLabel?.text = "\(indexPath.row)：\(element)"
+                return cell
+            })
+        
+        // 绑定单元格数据
+        items.bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+    }
+
+    
+    // 使用自定义类型2
+    func tableviewRxDataSources2() {
+        //初始化数据
+        let sections = Observable.just([
+            MySection(header: "基本控件", items: [
+                "自定义类型多分区的用法",
+                "自定义类型多分区的用法",
+                "自定义类型多分区用法"
+                ]),
+            MySection(header: "高级控件", items: [
+                "自定义类型多分区用法",
+                "自定义类型多分区用法"
+                ])
+            ])
+        
+        //创建数据源
+        let dataSource = RxTableViewSectionedAnimatedDataSource<MySection>(
+            //设置单元格
+            configureCell: { ds, tv, ip, item in
+                let cell = tv.dequeueReusableCell(withIdentifier: "Cell")
+                    ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
+                cell.textLabel?.text = "\(ip.section) \(ip.row)：\(item)"
+                
+                return cell
+        },
+            //设置分区头标题
+            titleForHeaderInSection: { ds, index in
+                return ds.sectionModels[index].header
+        })
+        
+        
+        //绑定单元格数据
+        sections
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+    }
+    
+    
     
     // TableView基本用法
     func planTableView() {

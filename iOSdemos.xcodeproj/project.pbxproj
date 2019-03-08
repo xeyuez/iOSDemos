@@ -17,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		39E18C7C2232194C00FBC230 /* Stack.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Stack.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		39E6FCC522265FA400088095 /* RxSwiftExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftExampleViewController.swift; sourceTree = "<group>"; };
 		39EB10542224DC9A00EA4434 /* iOSdemos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSdemos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39EB10572224DC9A00EA4434 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39E18C7B223218F400FBC230 /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				39E18C7C2232194C00FBC230 /* Stack.playground */,
+			);
+			path = Algorithm;
+			sourceTree = "<group>";
+		};
 		39E6FCC422265F4E00088095 /* RxSwift */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +82,7 @@
 			children = (
 				39EB10572224DC9A00EA4434 /* AppDelegate.swift */,
 				39EB10592224DC9A00EA4434 /* DemosViewController.swift */,
+				39E18C7B223218F400FBC230 /* Algorithm */,
 				39E6FCC422265F4E00088095 /* RxSwift */,
 				39EB105B2224DC9A00EA4434 /* Main.storyboard */,
 				39EB105E2224DC9C00EA4434 /* Assets.xcassets */,

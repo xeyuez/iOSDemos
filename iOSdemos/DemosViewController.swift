@@ -31,7 +31,7 @@ extension Example: CustomStringConvertible {
 //列表数据源viewmodel
 struct ExampleListViewModel {
     let data = Observable.just( [
-        Example(name: "RxSwift deme", detail: "RxSwift 使用demo"),
+        Example(name: "RxSwift demo", detail: "RxSwift 使用demo"),
         ])
 }
 
@@ -54,7 +54,7 @@ class DemosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //将数据绑定到tableViewcell上
         exampleListViewModel.data
             .bind(to: tableView.rx.items(cellIdentifier: "cell", cellType: UITableViewCell.self)) { row, example, cell in
@@ -71,15 +71,15 @@ class DemosViewController: UIViewController {
                 let vc = RxSwiftExampleViewController()
                 sSelf.navigationController?.pushViewController(vc, animated: true)
             }).disposed(by: disposeBag)
-      
+        
         tableView.rx
             .itemSelected
             .subscribe(onNext: {[weak self] indexPath in
-            guard let sSelf = self else { return }
-            print("选中项的indexPath为：\(indexPath)")
-            
-            sSelf.tableView.deselectRow(at: indexPath, animated: true)
-        }).disposed(by: disposeBag)
+                guard let sSelf = self else { return }
+                print("选中项的indexPath为：\(indexPath)")
+                
+                sSelf.tableView.deselectRow(at: indexPath, animated: true)
+            }).disposed(by: disposeBag)
         
     }
     
