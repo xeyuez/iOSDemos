@@ -101,24 +101,42 @@ import UIKit
 
 
 // 插入排序
-public func insectionSort<T: Comparable>(_ array: [T], _ sortdir: (T, T) -> Bool) -> [T] {
-    guard array.count > 1 else { return array }
+//public func insectionSort<T: Comparable>(_ array: [T], _ sortdir: (T, T) -> Bool) -> [T] {
+//    guard array.count > 1 else { return array }
+//
+//    var a = array
+//    for x in 1..<array.count {
+//        var y = x       // y为当前位置, 会依次往前遍历
+//        let temp = a[y]
+//        while y > 0 && sortdir(temp, a[y - 1]) {
+//            a[y] = a[y - 1]  // 自己等于前面一个数
+//            y -= 1           // 从自己的位置往前遍历
+//        }
+//        a[y] = temp //前面没有数再比自己小了 就放在最前面
+//    }
+//    return a
+//}
+//
+//
+//let list = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
+//// [-1, 0, 1, 2, 3, 3, 5, 8, 9, 10, 26, 27]
+//let a = insectionSort(list, <)
+//print(a)
 
-    var a = array
-    for x in 1..<array.count {
-        var y = x       // y为当前位置, 会依次往前遍历
-        let temp = a[y]
-        while y > 0 && sortdir(temp, a[y - 1]) {
-            a[y] = a[y - 1]  // 自己等于前面一个数
-            y -= 1           // 从自己的位置往前遍历
+
+// 二分查找
+public func binarySearch<T: Comparable>(_ a: [T], key: T) -> Int? {
+    var lowerBound = 0  //最低
+    var upperBound = a.count  //最高
+    while lowerBound < upperBound {
+        let midIndex = lowerBound + (upperBound - lowerBound) / 2
+        if a[midIndex] == key {
+            return midIndex
+        } else if a[midIndex] < key {
+            lowerBound = midIndex + 1
+        } else {
+            upperBound = midIndex
         }
-        a[y] = temp //前面没有数再比自己小了 就放在最前面
     }
-    return a
+    return nil
 }
-
-
-let list = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
-// [-1, 0, 1, 2, 3, 3, 5, 8, 9, 10, 26, 27]
-let a = insectionSort(list, <)
-print(a)
