@@ -13,7 +13,7 @@ public func binarySearch<T: Comparable>(_ a: [T], key: T) -> Int? {
     var lowerBound = 0
     var upperBound = a.count
     while lowerBound < upperBound {
-        let midIndex = lowerBound + (upperBound - lowerBound) / 2
+        let midIndex = lowerBound + (upperBound - lowerBound) / 2 //中间值
         if a[midIndex] == key {
             return midIndex
         } else if a[midIndex] < key {
