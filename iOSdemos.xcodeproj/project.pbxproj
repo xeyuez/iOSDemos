@@ -10,6 +10,7 @@
 		392657D522324B65007B4808 /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392657D422324B65007B4808 /* InsertionSort.swift */; };
 		392657D922326967007B4808 /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392657D822326967007B4808 /* BinarySearch.swift */; };
 		392E529422363FC1007AEBAC /* MergeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392E529322363FC1007AEBAC /* MergeSort.swift */; };
+		392E5297223790F3007AEBAC /* BlueToothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392E5296223790F3007AEBAC /* BlueToothViewController.swift */; };
 		39E18C7E223239AC00FBC230 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E18C7D223239AC00FBC230 /* Queue.swift */; };
 		39E18C8022323C6F00FBC230 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E18C7F22323C6F00FBC230 /* Stack.swift */; };
 		39E6FCC622265FA400088095 /* RxSwiftExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E6FCC522265FA400088095 /* RxSwiftExampleViewController.swift */; };
@@ -25,6 +26,7 @@
 		392657D422324B65007B4808 /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
 		392657D822326967007B4808 /* BinarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearch.swift; sourceTree = "<group>"; };
 		392E529322363FC1007AEBAC /* MergeSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSort.swift; sourceTree = "<group>"; };
+		392E5296223790F3007AEBAC /* BlueToothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueToothViewController.swift; sourceTree = "<group>"; };
 		39E18C7C2232194C00FBC230 /* playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = playground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		39E18C7D223239AC00FBC230 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		39E18C7F22323C6F00FBC230 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		392E52952237905C007AEBAC /* BlueTooth */ = {
+			isa = PBXGroup;
+			children = (
+				392E5296223790F3007AEBAC /* BlueToothViewController.swift */,
+			);
+			path = BlueTooth;
+			sourceTree = "<group>";
+		};
 		39E18C7B223218F400FBC230 /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +107,7 @@
 			children = (
 				39EB10572224DC9A00EA4434 /* AppDelegate.swift */,
 				39EB10592224DC9A00EA4434 /* DemosViewController.swift */,
+				392E52952237905C007AEBAC /* BlueTooth */,
 				39E18C7B223218F400FBC230 /* Algorithm */,
 				39E6FCC422265F4E00088095 /* RxSwift */,
 				39EB105B2224DC9A00EA4434 /* Main.storyboard */,
@@ -261,6 +272,7 @@
 				392657D522324B65007B4808 /* InsertionSort.swift in Sources */,
 				392657D922326967007B4808 /* BinarySearch.swift in Sources */,
 				39E6FCC622265FA400088095 /* RxSwiftExampleViewController.swift in Sources */,
+				392E5297223790F3007AEBAC /* BlueToothViewController.swift in Sources */,
 				39E18C7E223239AC00FBC230 /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,7 +423,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F8MDM8888R;
 				INFOPLIST_FILE = iOSdemos/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -431,7 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F8MDM8888R;
 				INFOPLIST_FILE = iOSdemos/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -32,6 +32,7 @@ extension Example: CustomStringConvertible {
 struct ExampleListViewModel {
     let data = Observable.just( [
         Example(name: "RxSwift demo", detail: "RxSwift 使用demo"),
+        Example(name: "blue tooth", detail: ""),
         ])
 }
 
@@ -68,8 +69,7 @@ class DemosViewController: UIViewController {
             .subscribe(onNext: { [weak self] example in //.subscribe 订阅
                 guard let sSelf = self else { return }
                 print("你选中的信息【\(example)】")
-                let vc = RxSwiftExampleViewController()
-                sSelf.navigationController?.pushViewController(vc, animated: true)
+              
             }).disposed(by: disposeBag)
         
         tableView.rx
@@ -77,7 +77,16 @@ class DemosViewController: UIViewController {
             .subscribe(onNext: {[weak self] indexPath in
                 guard let sSelf = self else { return }
                 print("选中项的indexPath为：\(indexPath)")
-                
+                switch indexPath.row {
+                case 0:
+                    let vc = RxSwiftExampleViewController()
+                    sSelf.navigationController?.pushViewController(vc, animated: true)
+                case 1:
+                    let vc = BlueToothViewController()
+                    sSelf.navigationController?.pushViewController(vc, animated: true)
+                default:
+                    break
+                }
                 sSelf.tableView.deselectRow(at: indexPath, animated: true)
             }).disposed(by: disposeBag)
         
